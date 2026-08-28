@@ -12,6 +12,8 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
+import CommandPalette from './components/CommandPalette'
+import BackToTop from './components/BackToTop'
 
 export default function App() {
   useAnimations()
@@ -39,6 +41,8 @@ export default function App() {
 
       <Footer />
       <ChatWidget />
+      <CommandPalette />
+      <BackToTop />
     </>
   )
 }

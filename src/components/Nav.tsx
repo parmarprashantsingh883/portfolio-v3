@@ -42,6 +42,14 @@ export default function Nav() {
           <a href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
         </nav>
         <button
+          className="kbd-hint"
+          aria-label="Open command palette"
+          title="Command palette (⌘K)"
+          onClick={() => window.dispatchEvent(new Event('pf-open-kbar'))}
+        >
+          ⌘K
+        </button>
+        <button
           className="theme-btn"
           aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
           title={theme === 'light' ? 'Dark mode' : 'Light mode'}

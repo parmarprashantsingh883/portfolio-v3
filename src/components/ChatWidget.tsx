@@ -2,7 +2,12 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { ask } from '../lib/chatEngine'
 import { DEFAULT_CHIPS, GREETING } from '../lib/chatKB'
 
-type Msg = { role: 'user' | 'bot'; text: string; chips?: string[] }
+type Msg = { role: 'user' | 'bot'; text: string; chips?: string[]; instant?: boolean }
+
+const timeGreeting = () => {
+  const h = new Date().getHours()
+  return h < 12 ? 'Good morning!' : h < 17 ? 'Good afternoon!' : 'Good evening!'
+}
 
 /* animated robot mascot: blinking eyes + cursor-tracking pupils (wired in ChatWidget) */
 function BotFace() {
@@ -46,6 +51,21 @@ function render(text: string): ReactNode[] {
     if (last < line.length) nodes.push(line.slice(last))
     return li < arr.length - 1 ? [...nodes, <br key={`${li}-br`} />] : nodes
   })
+}
+
+/* bot replies stream in line-by-line (markdown stays intact per line) */
+function StreamedText({ text, instant, onGrow }: { text: string; instant?: boolean; onGrow: () => void }) {
+  const lines = text.split('\n')
+  const [n, setN] = useState(instant || matchMedia('(prefers-reduced-motion: reduce)').matches ? lines.length : 1)
+  useEffect(() => {
+    if (n >= lines.length) return
+    const t = setTimeout(() => {
+      setN(n + 1)
+      onGrow()
+    }, 170)
+    return () => clearTimeout(t)
+  }, [n, lines.length, onGrow])
+  return <>{render(lines.slice(0, n).join('\n'))}</>
 }
 
 export default function ChatWidget() {
@@ -93,9 +113,16 @@ export default function ChatWidget() {
     sessionStorage.setItem('pf-teased', '1')
   }
 
+  /* command palette → open chat */
+  useEffect(() => {
+    const on = () => openChat()
+    window.addEventListener('pf-open-chat', on)
+    return () => window.removeEventListener('pf-open-chat', on)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     if (open && msgs.length === 0) {
-      setMsgs([{ role: 'bot', text: GREETING, chips: DEFAULT_CHIPS }])
+      setMsgs([{ role: 'bot', text: `${timeGreeting()} ${GREETING.replace('Hi! ', '')}`, chips: DEFAULT_CHIPS, instant: true }])
     }
     if (open) setTimeout(() => inputRef.current?.focus(), 120)
   }, [open]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -164,7 +191,16 @@ export default function ChatWidget() {
 
           <div className="chat-body" ref={bodyRef}>
             {msgs.map((m, i) => (
-              <div key={i} className={`msg ${m.role}`}>{m.role === 'bot' ? render(m.text) : m.text}</div>
+              <div key={i} className={`msg ${m.role}`}>
+                {m.role === 'bot' ? (
+                  <StreamedText text={m.text} instant={m.instant} onGrow={() => {
+                    const el = bodyRef.current
+                    if (el) el.scrollTop = el.scrollHeight
+                  }} />
+                ) : (
+                  m.text
+                )}
+              </div>
             ))}
             {typing && (
               <div className="typing" aria-label="Assistant is typing">
