@@ -23,6 +23,29 @@ const rawTokens = (q: string): string[] =>
 
 const canonTokens = (toks: string[]): string[] => toks.map((t) => SYNONYMS[t] ?? t)
 
+/* typo tolerance: edit-distance-1 lookup against the known vocabulary */
+const VOCAB: string[] = [...new Set([...Object.keys(SYNONYMS), ...KB.flatMap((e) => e.keys)])]
+function dist1(a: string, b: string): boolean {
+  if (a === b) return true
+  const la = a.length
+  const lb = b.length
+  if (Math.abs(la - lb) > 1) return false
+  let i = 0, j = 0, edits = 0
+  while (i < la && j < lb) {
+    if (a[i] === b[j]) { i++; j++; continue }
+    if (++edits > 1) return false
+    if (la === lb) { i++; j++ }        // substitution
+    else if (la > lb) i++              // deletion in a
+    else j++                           // insertion in a
+  }
+  return edits + (la - i) + (lb - j) <= 1
+}
+const fixTypo = (t: string): string | null => {
+  if (t.length < 4) return null
+  const hit = VOCAB.find((v) => v.length > 3 && dist1(t, v))
+  return hit ? (SYNONYMS[hit] ?? hit) : null
+}
+
 const isYesNoQ = (q: string) =>
   /^(does|do|did|is|has|have|had|can|could|would|will|was|are|any)\b/i.test(q.trim()) ||
   /\b(know|knows|use|uses|used|familiar|worked|work with|experience (with|in|of)|comfortable)\b/i.test(q)
@@ -172,7 +195,7 @@ function skillAnswer(q: string, raw: string[]): BotReply | null {
 
   if (facts.length === 1) {
     const f = facts[0]
-    const opener = isYesNoQ(q) ? (f.known ? '**Yes.** ' : '**Honest answer: not yet.** ') : ''
+    const opener = isYesNoQ(q) ? (f.known ? (/^\**yes/i.test(f.text) ? '' : '**Yes.** ') : '**Honest answer: not yet.** ') : ''
     return {
       text: opener + f.text,
       chips: f.known ? ['Projects using it', 'His full stack', 'Contact him'] : ['What he IS deep in', 'His AI workflow', 'Contact him'],
@@ -242,6 +265,26 @@ function localAnswer(query: string): BotReply {
   if (best && best.score >= 1) {
     lastEntry = best.entry
     return { text: best.entry.answer, chips: best.entry.chips ?? DEFAULT_CHIPS }
+  }
+
+  // typo recovery: re-score after edit-distance-1 correcting each unknown token
+  const corrected = raw.map((t) => fixTypo(t)).filter((t): t is string => t !== null)
+  if (corrected.length > 0) {
+    const cSet = new Set(corrected)
+    let cBest: KBEntry | null = null
+    let cScore = 0
+    for (const entry of KB) {
+      let sc = 0
+      for (const k of entry.keys) if (cSet.has(k)) sc += 1
+      if (sc > cScore) {
+        cScore = sc
+        cBest = entry
+      }
+    }
+    if (cBest && cScore >= 1) {
+      lastEntry = cBest
+      return { text: cBest.answer, chips: cBest.chips ?? DEFAULT_CHIPS }
+    }
   }
 
   // smart fallback: fuzzy-suggest the nearest topic instead of a generic shrug

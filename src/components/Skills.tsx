@@ -60,6 +60,7 @@ const TOOLS: Chip[] = [
   { label: 'Playwright', src: `${D}/playwright/playwright-original.svg` },
   { label: 'Git · GitHub', src: `${D}/git/git-original.svg` },
   { label: 'Azure DevOps', src: `${D}/azuredevops/azuredevops-original.svg` },
+  { label: 'Docker', src: `${D}/docker/docker-original.svg` },
   { label: 'Vercel', src: `${N}/vercel.svg` },
   { label: 'Render', src: `${N}/render.svg` },
 ]

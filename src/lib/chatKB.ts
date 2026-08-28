@@ -27,6 +27,7 @@ export const SYNONYMS: Record<string, string> = {
   built: 'projects', build: 'projects', portfolio: 'projects', made: 'projects', apps: 'projects', project: 'projects',
   claude: 'ai', copilot: 'ai', chatgpt: 'ai', llm: 'ai', agent: 'ai', agents: 'ai', gpt: 'ai',
   email: 'contact', mail: 'contact', phone: 'contact', call: 'contact', reach: 'contact', connect: 'contact',
+  number: 'contact', mobile: 'contact', telephone: 'contact', cell: 'contact', digits: 'contact', dm: 'contact',
   cv: 'resume', bio: 'resume', biodata: 'resume',
   stack: 'skills', tech: 'skills', technologies: 'skills', technology: 'skills', skill: 'skills', tools: 'skills',
   college: 'education', university: 'education', degree: 'education', study: 'education', studied: 'education',
@@ -68,7 +69,7 @@ export const KB: KBEntry[] = [
     keys: ['skills'],
     phrases: ['tech stack', 'what can he do', 'good at'],
     answer:
-      "**Languages:** TypeScript, JavaScript (ES6+), HTML5, CSS3\n**Frontend:** React 19, React Router, TanStack Query v5 & Table, React Hook Form + Zod, Zustand, Redux\n**Styling:** Tailwind CSS, shadcn/ui (Radix), responsive & accessible UI\n**Backend & data:** Node.js, Express, MongoDB, REST APIs, JWT, multi-tenancy\n**Testing & tooling:** Vite, Vitest, Playwright, Git, Azure DevOps, Vercel/Render\nAnd the meta-skill: **directing AI coding agents** through all of the above.",
+      "**Languages:** TypeScript, JavaScript (ES6+), HTML5, CSS3\n**Frontend:** React 19, React Router, TanStack Query v5 & Table, React Hook Form + Zod, Zustand, Redux\n**Styling:** Tailwind CSS, shadcn/ui (Radix), responsive & accessible UI\n**Backend & data:** Node.js, Express, MongoDB, REST APIs, JWT, multi-tenancy\n**Testing & tooling:** Vite, Vitest, Playwright, Git, Azure DevOps, Docker, Vercel/Render\nAnd the meta-skill: **directing AI coding agents** through all of the above.",
     chips: ['His AI workflow', 'Projects using this stack', 'Contact him'],
   },
   {
@@ -119,7 +120,7 @@ export const KB: KBEntry[] = [
   },
   {
     id: 'contact',
-    keys: ['contact', 'linkedin', 'whatsapp'],
+    keys: ['contact', 'linkedin', 'whatsapp', 'number', 'mobile', 'telephone'],
     phrases: ['get in touch', 'talk to him'],
     answer:
       '📧 **Email:** [parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)\n📱 **Phone:** [+91-9574028096](tel:+919574028096)\n🐙 **GitHub:** [github.com/parmarprashantsingh883](https://github.com/parmarprashantsingh883)\n📄 **Resume:** [download the PDF](/resume.pdf)\nHe responds fast — reach out!',
@@ -266,7 +267,7 @@ export const SKILL_FACTS: Record<string, SkillFact> = {
   golang: { known: false, text: 'No Go yet — his backend experience is **Node.js/Express**, shipped and deployed in Quarters.' },
   php: { known: false, text: 'Not a PHP/Ruby person — his backend lane is **Node.js/Express with MongoDB**, deployed for real in Quarters.' },
   aws: { known: false, text: 'His deploys run on **Vercel + Render + MongoDB Atlas** rather than raw AWS — same concepts (envs, builds, scaling), friendlier tooling.' },
-  docker: { known: false, text: 'Docker/K8s aren\'t headline skills — his pipeline is **Vite builds on Vercel/Render**. He\'s comfortable picking up infra as needed.' },
+  docker: { known: true, text: 'Yes — he uses **Docker** for dev environments (e.g. containerized Postgres clones to test against production-parity data) alongside his Vercel/Render deploy pipelines.' },
   graphql: { known: false, text: 'His API work is **REST-first** (DWERP contracts, Quarters API) — no GraphQL project shipped yet.' },
   reactnative: { known: false, text: 'No shipped mobile app yet — but he\'s **React-deep**, which is most of the React Native on-ramp. His UIs are fully responsive/mobile-first.' },
 }
