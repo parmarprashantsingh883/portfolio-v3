@@ -746,13 +746,6 @@ body,.navbar,.proj,.xp-card,.skill-card,.stat,.do-card,.ai-card,.about-card{tran
   font-family:var(--mono);font-size:10.5px;color:var(--faint)}
 .kbar-foot b{color:var(--muted);font-weight:600}
 
-/* ⌘K hint in navbar */
-.kbd-hint{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted);background:var(--card);
-  border:1px solid var(--line);border-radius:8px;padding:7px 9px;cursor:pointer;
-  transition:color .2s,border-color .2s,background .2s}
-.kbd-hint:hover{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
-@media (max-width:960px){.kbd-hint{display:none}}
-
 /* back to top */
 .top-fab{position:fixed;left:26px;bottom:26px;z-index:250;width:42px;height:42px;border-radius:50%;
   border:1px solid var(--line);background:var(--card);color:var(--muted);display:grid;place-items:center;cursor:pointer;
