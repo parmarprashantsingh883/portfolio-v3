@@ -762,23 +762,7 @@ body,.navbar,.proj,.xp-card,.skill-card,.stat,.do-card,.ai-card,.about-card{tran
 @media (max-width:640px){.top-fab{left:14px;bottom:14px;width:38px;height:38px}}
 @media (prefers-reduced-motion:reduce){.kbar,.kbar-overlay{animation:none!important}}
 
-/* ---------- spotlight hover: glow follows the cursor on cards ---------- */
-.do-card,.ai-card,.skill-card{position:relative}
-.proj::after,.skill-card::after,.do-card::after,.ai-card::after,.xp-role-card::after{
-  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;
-  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),
-    color-mix(in srgb,var(--accent) 8%,transparent),transparent 70%);
-  transition:opacity .35s}
-.proj:hover::after,.skill-card:hover::after,.do-card:hover::after,.ai-card:hover::after,.xp-role-card:hover::after{opacity:1}
-.skill-card.dark::after{background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(110,168,255,.12),transparent 70%)}
-[data-theme="dark"] .proj::after,[data-theme="dark"] .skill-card::after,[data-theme="dark"] .do-card::after,
-[data-theme="dark"] .ai-card::after,[data-theme="dark"] .xp-role-card::after{
-  background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(91,140,255,.1),transparent 70%)}
-
 /* ---------- a11y + anchor polish ---------- */
 section[id]{scroll-margin-top:86px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .navbar a:focus-visible,.btn:focus-visible,.chat-chip:focus-visible{border-radius:99px}
-@media (prefers-reduced-motion:reduce){
-  .proj::after,.skill-card::after,.do-card::after,.ai-card::after,.xp-role-card::after{display:none}
-}
