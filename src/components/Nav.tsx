@@ -31,7 +31,7 @@ export default function Nav() {
     <header id="header">
       <div className="navbar">
         <a className="brand" href="#top">
-          <span className="mk">P<b>.</b></span> Prashant Parmar
+          <span className="mk">P<b>.</b></span> <span className="brand-name">Prashant Parmar</span>
         </a>
         <nav className="navlinks" id="navlinks">
           <a href="#work">Work</a>

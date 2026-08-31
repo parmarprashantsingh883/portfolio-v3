@@ -54,7 +54,7 @@ header{position:fixed;top:14px;left:0;right:0;z-index:100;pointer-events:none}
   background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--line);box-shadow:var(--shadow-1);
   transition:box-shadow .3s,background .3s}
 header.scrolled .navbar{box-shadow:var(--shadow-2);background:var(--glass-solid)}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink);white-space:nowrap}
 .brand .mk{width:30px;height:30px;border-radius:10px;background:var(--chip);color:var(--chip-ink);display:grid;place-items:center;
   font-family:var(--disp);font-size:13.5px;font-weight:800;transition:transform .35s var(--ease)}
 .brand:hover .mk{transform:rotate(-8deg) scale(1.06)}
@@ -63,7 +63,7 @@ header.scrolled .navbar{box-shadow:var(--shadow-2);background:var(--glass-solid)
 .navlinks a{position:relative;font-size:13.5px;font-weight:600;color:var(--muted);padding:8px 13px;border-radius:99px;transition:color .2s,background .2s}
 .navlinks a:hover{color:var(--ink);background:var(--tint)}
 .navlinks a.active{color:var(--accent)}
-.nav-cta{font-size:13.5px;font-weight:700;color:var(--chip-ink);background:var(--chip);padding:9px 17px;border-radius:99px;
+.nav-cta{font-size:13.5px;font-weight:700;color:var(--chip-ink);background:var(--chip);padding:9px 17px;border-radius:99px;white-space:nowrap;
   transition:transform .25s var(--ease),background .25s;display:inline-flex;align-items:center;gap:7px}
 .nav-cta:hover{background:var(--accent);transform:translateY(-1px)}
 .nav-cta .dot{width:6px;height:6px;border-radius:50%;background:#39d98a;animation:blink 2.2s infinite}
@@ -477,6 +477,7 @@ footer{padding:26px 0 34px}
 .burger:active{transform:scale(.94)}
 .burger svg{width:19px;height:19px;color:var(--ink)}
 .burger .x{display:none}
+body.menu-open .nav-cta{display:none}
 body.menu-open .burger .bars{display:none}
 body.menu-open .burger .x{display:block}
 .mobile-menu{position:fixed;top:72px;left:14px;right:14px;z-index:99;display:none;pointer-events:auto;
@@ -489,7 +490,7 @@ body.menu-open .mobile-menu{display:block;animation:mmIn .32s var(--ease)}
 .mobile-menu a:hover{background:var(--tint)}
 .mobile-menu a span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--faint)}
 .mobile-menu .mm-cta{margin-top:6px;background:var(--chip);color:var(--chip-ink);justify-content:center}
-.mobile-menu .mm-cta:hover{background:var(--accent)}
+.mobile-menu .mm-cta:hover{opacity:.9}
 body.menu-open{overflow:hidden}
 
 /* ---------- responsive ---------- */
@@ -497,9 +498,11 @@ body.menu-open{overflow:hidden}
   .float-chip{display:none}
 }
 @media(max-width:960px){
-  .navbar{margin:0 14px}
+  .navbar{margin:0 14px;gap:10px}
   .navlinks{display:none}
   .burger{display:grid}
+  /* cluster the controls on the right instead of scattering them across the bar */
+  .theme-btn{margin-left:auto}
   .do-grid{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr}
   .xp-list{grid-template-columns:1fr}
@@ -513,6 +516,8 @@ body.menu-open{overflow:hidden}
 }
 @media(max-width:640px){
   .pad{padding:74px 0}
+  .brand-name{display:none}
+  .navbar{padding:8px 8px 8px 12px}
   .wrap{padding:0 18px}
   .navbar{padding:8px 8px 8px 14px;gap:10px}
   .brand{font-size:14px}
@@ -596,7 +601,7 @@ body,.navbar,.proj,.xp-card,.skill-card,.stat,.do-card,.ai-card,.about-card{tran
 [data-theme="dark"] .intro-word b{color:#5b8cff}
 [data-theme="dark"] .proj-note,[data-theme="dark"] .xp-note{box-shadow:0 6px 16px -8px rgba(0,0,0,.6)}
 [data-theme="dark"] .nav-cta:hover{background:var(--accent);color:#fff}
-[data-theme="dark"] .mm-cta:hover{background:var(--accent);color:#fff}
+
 [data-theme="dark"] .btn.dark:hover{color:#fff}
 [data-theme="dark"] .plink:hover{color:var(--chip-ink)}
 
