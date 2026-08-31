@@ -14,14 +14,20 @@ export function useAnimations() {
     const dispose: Array<() => void> = []
     let killed = false
 
-    /* scroll progress + header shadow */
+    /* scroll progress + header shadow + hero scroll-exit choreography */
     const header = document.getElementById('header')
     const progress = document.getElementById('progress')
+    const hero = document.querySelector<HTMLElement>('.hero')
     const onScroll = () => {
       const st = window.scrollY
       const h = document.documentElement.scrollHeight - window.innerHeight
       if (progress) progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%'
       header?.classList.toggle('scrolled', st > 20)
+      if (hero && !rm) {
+        const k = Math.min(1, st / 640)
+        hero.style.opacity = String(1 - k * 0.45)
+        hero.style.transform = `translateY(${(st * 0.07).toFixed(1)}px)`
+      }
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
@@ -66,6 +72,19 @@ export function useAnimations() {
         const iv = window.setInterval(cycle, 3000)
         dispose.push(() => clearInterval(iv))
       }
+    }
+
+    /* spotlight hover: cards track the cursor via --mx/--my */
+    if (fine && !rm) {
+      document.querySelectorAll<HTMLElement>('.proj, .skill-card, .do-card, .ai-card, .xp-role-card').forEach((card) => {
+        const onMove = (e: MouseEvent) => {
+          const r = card.getBoundingClientRect()
+          card.style.setProperty('--mx', `${e.clientX - r.left}px`)
+          card.style.setProperty('--my', `${e.clientY - r.top}px`)
+        }
+        card.addEventListener('mousemove', onMove, { passive: true })
+        dispose.push(() => card.removeEventListener('mousemove', onMove))
+      })
     }
 
     /* reveal on scroll */
