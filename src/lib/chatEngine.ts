@@ -345,7 +345,8 @@ async function remoteAnswer(history: WireMsg[]): Promise<string | null> {
       })
       clearTimeout(timer)
       if (!res.ok) {
-        remoteDown = true
+        // 429/5xx are transient — fall back for this message only and retry next time
+        if (res.status === 401 || res.status === 403) remoteDown = true
         return null
       }
       const data: any = await res.json()
@@ -360,7 +361,8 @@ async function remoteAnswer(history: WireMsg[]): Promise<string | null> {
       })
       clearTimeout(timer)
       if (!res.ok) {
-        remoteDown = true
+        // 404/501 = endpoint not deployed/configured → stop trying; 429/5xx are transient
+        if (res.status === 404 || res.status === 501) remoteDown = true
         return null
       }
       const data = (await res.json()) as { reply?: string | null }
@@ -368,7 +370,7 @@ async function remoteAnswer(history: WireMsg[]): Promise<string | null> {
     }
     return reply
   } catch {
-    remoteDown = true
+    // timeouts / network blips are transient — keep trying on later messages
     return null
   }
 }
