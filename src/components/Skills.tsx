@@ -35,6 +35,8 @@ const FRONTEND: Chip[] = [
   { label: 'React Hook Form', src: `${N}/reacthookform.svg` },
   { label: 'Zod', src: `${N}/zod.svg` },
   { label: 'Typed forms' }, { label: 'Data-layer design' }, { label: 'Performance tuning' },
+  { label: 'Custom hooks' }, { label: 'Code-splitting & lazy routes' }, { label: 'Error boundaries' },
+  { label: 'Scroll-driven animation' },
 ]
 
 const UI: Chip[] = [
@@ -88,7 +90,7 @@ export default function Skills() {
         </div>
         <div className="skills-bento">
 
-          <div className="skill-card s3 rv fl" style={sc('#2f6bff')}>
+          <div className="skill-card s3 tall rv fl" style={sc('#2f6bff')}>
             <img className="sc-mark" src={`${D}/typescript/typescript-original.svg`} alt="" loading="lazy" onError={drop} />
             <div className="sc-head">
               <span className="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9}><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2z" /></svg></span>
@@ -120,7 +122,7 @@ export default function Skills() {
             <Chips items={FRONTEND} />
           </div>
 
-          <div className="skill-card s2 rv fl" style={sc('#7c5cff')}>
+          <div className="skill-card s3 rv fl" style={sc('#7c5cff')}>
             <img className="sc-mark" src={`${D}/tailwindcss/tailwindcss-original.svg`} alt="" loading="lazy" onError={drop} />
             <div className="sc-head">
               <span className="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9}><circle cx="13.5" cy="6.5" r="2.5" /><path d="M17 11a9 9 0 1 0-6 10.5c1.5.5 3-.5 3-2v-1a2 2 0 0 1 2-2h2.5A2.5 2.5 0 0 0 21 14c0-1-.5-2-1.5-2.5" /><circle cx="7.5" cy="10.5" r="1" /><circle cx="8.5" cy="15.5" r="1" /></svg></span>
@@ -129,7 +131,7 @@ export default function Skills() {
             <Chips items={UI} />
           </div>
 
-          <div className="skill-card s2 rv" data-d="1" style={sc('#0eaa5f')}>
+          <div className="skill-card s3 rv" data-d="1" style={sc('#0eaa5f')}>
             <img className="sc-mark" src={`${D}/mongodb/mongodb-original.svg`} alt="" loading="lazy" onError={drop} />
             <div className="sc-head">
               <span className="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9}><ellipse cx="12" cy="5.5" rx="8" ry="2.8" /><path d="M4 5.5V12c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8V5.5" /><path d="M4 12v6.5c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8V12" /></svg></span>
@@ -138,7 +140,7 @@ export default function Skills() {
             <Chips items={BACKEND} />
           </div>
 
-          <div className="skill-card s2 rv fr" data-d="2" style={sc('#ff8a3d')}>
+          <div className="skill-card s3 rv fr" data-d="2" style={sc('#ff8a3d')}>
             <img className="sc-mark" src={`${N}/vite.svg`} alt="" loading="lazy" onError={drop} />
             <div className="sc-head">
               <span className="sc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9}><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" /><path d="m9 11.5 2 2 4-4.5" /></svg></span>
