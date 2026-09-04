@@ -221,7 +221,7 @@ h1 .row>span{display:block;transform:translateY(112%);animation:up2 .9s var(--ea
 .proj-points li{display:flex;gap:9px;font-size:14px;color:var(--muted);text-wrap:pretty}
 .proj-points li::before{content:"→";color:var(--pc,var(--accent));flex:none;font-weight:700}
 .proj-points b{color:var(--ink)}
-.proj-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:20px}
 .ptag{font-family:var(--mono);font-size:11.5px;color:var(--body);background:var(--tint);border:1px solid var(--line);padding:5px 11px;border-radius:99px}
 .proj-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:20px;position:relative;z-index:1}
 .plink{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--ink);

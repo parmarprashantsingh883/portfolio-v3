@@ -71,7 +71,8 @@ const PROJECTS: Project[] = [
     desc: 'A full grocery storefront built against a JSON REST API.',
     points: [
       <>Category filters, dynamic product pages, <b>cart &amp; wishlist</b> flows</>,
-      <>Composed from <b>reusable, responsive components</b></>,
+      <><b>Search, reviews, coupons</b> &amp; order timeline — a full e-commerce tier</>,
+      <>Composed from <b>reusable, responsive components</b>, backed by <b>21 tests</b></>,
     ],
     tags: ['React', 'REST API', 'Responsive UI'],
     repo: 'https://github.com/parmarprashantsingh883/clovers',
