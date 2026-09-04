@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import type { CSSProperties, ReactNode } from 'react'
+import CaseStudy from './CaseStudy'
 
 const pc = (c: string) => ({ '--pc': c }) as CSSProperties
 
 type Project = {
   num: string
+  sid: string
   accent: string
   title: string
   badge: { label: string; kind: 'live' | 'oss' | 'app' }
@@ -18,6 +21,7 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     num: '01',
+    sid: 'quarters',
     accent: '#2f6bff',
     title: 'Quarters',
     badge: { label: '● Live in production', kind: 'live' },
@@ -34,6 +38,7 @@ const PROJECTS: Project[] = [
   },
   {
     num: '02',
+    sid: 'signet',
     accent: '#0eaa5f',
     title: 'Signet — IT Asset Management',
     badge: { label: 'Open source', kind: 'oss' },
@@ -49,6 +54,7 @@ const PROJECTS: Project[] = [
   },
   {
     num: '03',
+    sid: 'adc',
     accent: '#7c5cff',
     title: 'ai-diff-check',
     badge: { label: 'Open source', kind: 'oss' },
@@ -64,6 +70,7 @@ const PROJECTS: Project[] = [
   },
   {
     num: '04',
+    sid: 'clovers',
     accent: '#ff8a3d',
     title: 'Clovers',
     badge: { label: 'React · REST', kind: 'app' },
@@ -80,6 +87,7 @@ const PROJECTS: Project[] = [
 ]
 
 export default function Work() {
+  const [study, setStudy] = useState<string | null>(null)
   return (
     <section className="pad" id="work" style={{ paddingTop: 30 }}>
       <div className="wrap">
@@ -102,10 +110,25 @@ export default function Work() {
               <div className="proj-tags">
                 {p.tags.map((t) => <span className="ptag" key={t}>{t}</span>)}
               </div>
+              <div className="proj-cta">
+                <button className="cs-open" onClick={() => setStudy(p.sid)}>
+                  Read the case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.1} strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </button>
+                <a
+                  className="proj-proof"
+                  href={p.sid === 'adc' ? 'https://www.npmjs.com/package/ai-diff-check' : p.repo}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {p.sid === 'adc' ? 'npm ↗' : 'GitHub ↗'}
+                </a>
+              </div>
             </article>
           ))}
         </div>
       </div>
+      <CaseStudy id={study} onClose={() => setStudy(null)} />
     </section>
   )
 }
