@@ -14,6 +14,7 @@ import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
 import CommandPalette from './components/CommandPalette'
 import BackToTop from './components/BackToTop'
+import QuickSummary from './components/QuickSummary'
 
 export default function App() {
   useAnimations()
@@ -42,6 +43,7 @@ export default function App() {
       <Footer />
       <ChatWidget />
       <CommandPalette />
+      <QuickSummary />
       <BackToTop />
     </>
   )

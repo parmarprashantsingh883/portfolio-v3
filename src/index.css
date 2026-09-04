@@ -784,3 +784,27 @@ section[id]{scroll-margin-top:86px}
 .tl-body b{display:block;font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
 .tl-body span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
 @media (max-width:640px){.tl-when{width:60px;font-size:10.5px}}
+
+/* ---------- hero quick-start row + 30-sec summary ---------- */
+.quick-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px;
+  font-size:13.5px;color:var(--faint);opacity:0;animation:up .7s var(--ease) forwards}
+.qr-label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.qr-sep{color:var(--line-2)}
+.qr-link{background:none;border:none;padding:0;cursor:pointer;font-family:var(--sans);font-size:13.5px;font-weight:600;
+  color:var(--muted);border-bottom:1px dashed var(--line-2);transition:color .2s,border-color .2s}
+.qr-link:hover{color:var(--accent);border-color:var(--accent-line)}
+
+.qsum{width:min(560px,100%);background:var(--card);border:1px solid var(--line);border-radius:20px;
+  box-shadow:var(--shadow-2);overflow:hidden;animation:kbIn .22s var(--ease)}
+.qsum-head{display:flex;align-items:center;gap:11px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.qsum-clock{font-size:18px}
+.qsum-head b{font-family:var(--disp);font-size:16px;font-weight:700;color:var(--ink)}
+.qsum-head .chat-x{margin-left:auto}
+.qsum-body{padding:18px 22px 6px}
+.qsum-body p{font-size:15px;color:var(--body);margin-bottom:12px}
+.qsum-body ul{list-style:none;display:grid;gap:10px}
+.qsum-body li{position:relative;padding-left:22px;font-size:14px;color:var(--muted);line-height:1.55}
+.qsum-body li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700}
+.qsum-body b{color:var(--ink)}
+.qsum-actions{display:flex;gap:10px;flex-wrap:wrap;padding:18px 22px 22px}
+.qsum-actions .btn{padding:11px 20px;font-size:14px}

@@ -80,6 +80,15 @@ export default function CommandPalette() {
     return [
       ...SECTIONS.map(([id, label]) => ({ id: `s-${id}`, label, hint: 'Section', icon: I.section, run: () => go(id) })),
       {
+        id: 'summary',
+        label: '30-second summary',
+        hint: 'Quick',
+        icon: I.doc,
+        run: () => {
+          window.dispatchEvent(new Event('pf-open-summary'))
+        },
+      },
+      {
         id: 'chat',
         label: 'Ask the AI assistant',
         hint: 'Chat',
