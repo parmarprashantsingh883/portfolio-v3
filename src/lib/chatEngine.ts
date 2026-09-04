@@ -8,6 +8,7 @@ import {
   SYNONYMS,
   type KBEntry,
 } from './chatKB'
+import { SYSTEM } from './chatPersona'
 
 export type BotReply = { text: string; chips: string[] }
 
@@ -58,7 +59,7 @@ let lastEntry: KBEntry | null = null
 
 const SMALLTALK: Array<[RegExp, () => BotReply]> = [
   [
-    /^(hi+|hey+|hello+|yo|hola|namaste|sup|good (morning|afternoon|evening))\b/i,
+    /^(hi+|hy+|hey+|heya?|hii*|hello+|helo+|yo|hola|namaste|sup|wassup|good (morning|afternoon|evening))\b/i,
     () => ({
       text: 'Hey! 👋 Great to have you here. Ask me anything about Prashant — his work, projects, or how to reach him.',
       chips: DEFAULT_CHIPS,
@@ -310,12 +311,17 @@ function localAnswer(query: string): BotReply {
   }
 }
 
-/* ---- optional Claude upgrade ----
-   In production we first try the /api/chat serverless function (real LLM).
-   If it isn't configured (404/501) or errors, we fall back to the local
-   engine and stop trying for the rest of the session. */
+/* ---- real-LLM mode ----
+   Production: every message goes to the /api/chat serverless function first
+   (Groq/Claude/Gemini/OpenRouter, whichever key is configured on Vercel).
+   Dev: Vite can't run serverless functions, so when VITE_GROQ_API_KEY is set
+   in .env the browser calls Groq directly (DEV-gated — tree-shaken out of
+   production bundles). The local knowledge engine is only the fallback for
+   no-key / offline / quota-exhausted situations. */
 
-let remoteDown = !import.meta.env.PROD
+const DEV_GROQ_KEY = import.meta.env.DEV ? (import.meta.env.VITE_GROQ_API_KEY as string | undefined) : undefined
+
+let remoteDown = !import.meta.env.PROD && !DEV_GROQ_KEY
 
 type WireMsg = { role: 'user' | 'assistant'; content: string }
 
@@ -323,20 +329,44 @@ async function remoteAnswer(history: WireMsg[]): Promise<string | null> {
   if (remoteDown) return null
   try {
     const ctrl = new AbortController()
-    const timer = setTimeout(() => ctrl.abort(), 8000)
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ messages: history.slice(-8) }),
-      signal: ctrl.signal,
-    })
-    clearTimeout(timer)
-    if (!res.ok) {
-      remoteDown = true
-      return null
+    const timer = setTimeout(() => ctrl.abort(), 12000)
+    let reply: string | null = null
+    if (DEV_GROQ_KEY) {
+      // dev: browser → Groq directly (the browser trusts the local network's CA)
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { authorization: `Bearer ${DEV_GROQ_KEY}`, 'content-type': 'application/json' },
+        body: JSON.stringify({
+          model: 'openai/gpt-oss-120b',
+          max_tokens: 400,
+          messages: [{ role: 'system', content: SYSTEM }, ...history.slice(-8)],
+        }),
+        signal: ctrl.signal,
+      })
+      clearTimeout(timer)
+      if (!res.ok) {
+        remoteDown = true
+        return null
+      }
+      const data: any = await res.json()
+      const t = data?.choices?.[0]?.message?.content
+      reply = typeof t === 'string' && t.trim() ? t.trim() : null
+    } else {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: history.slice(-8) }),
+        signal: ctrl.signal,
+      })
+      clearTimeout(timer)
+      if (!res.ok) {
+        remoteDown = true
+        return null
+      }
+      const data = (await res.json()) as { reply?: string | null }
+      reply = typeof data.reply === 'string' && data.reply.trim() ? data.reply : null
     }
-    const data = (await res.json()) as { reply?: string | null }
-    return typeof data.reply === 'string' && data.reply.trim() ? data.reply : null
+    return reply
   } catch {
     remoteDown = true
     return null
