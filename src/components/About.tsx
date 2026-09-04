@@ -16,6 +16,24 @@ export default function About() {
             <p className="about-p">I sweat the details users feel: fast loads, smooth motion, forms that guide instead of fight, and layouts that work on any screen. And my edge with <b>AI-powered development</b> isn't using the tools — it's directing them: I work with agents the way a tech lead reviews a fast junior, delegating execution and gatekeeping the output against what "good" actually looks like. Clean git history, reviewed PRs and repeatable playbooks keep it shippable to a <b>team</b>, not just working on my machine.</p>
             <p className="about-p">My path: <b>BCA at Silver Oak University (8.6 CGPA)</b> → intensive <b>MERN training at Tops Technologies</b> → building an enterprise ERP at <b>MSBC Group</b> — while shipping side projects the whole way.</p>
             <p className="about-p">A few opinions I've earned so far: loading and empty states are half of UX, <b>strict TypeScript beats optimism</b>, and a form that fights the user is a bug even when the code is "correct". Off the clock it's chai, side-project rabbit holes, and an unreasonable number of open tabs.</p>
+
+            <div className="timeline rv" data-d="1">
+              <h4 className="tl-title">The journey so far</h4>
+              {[
+                { when: '2023', what: 'Started BCA', note: 'Silver Oak University — where the rabbit hole began' },
+                { when: '2025', what: 'BCA done (8.6 CGPA) + MERN program', note: 'Tops Technologies — full-stack foundations' },
+                { when: 'Mar 2026', what: 'SDE at MSBC Group', note: 'Shipping to DWERP — a live enterprise ERP in production', hot: true },
+                { when: 'Jun 2026', what: 'Quarters goes live', note: 'Multi-tenant SaaS built & deployed solo' },
+                { when: 'Jul 2026', what: 'ai-diff-check on npm', note: 'Open-source CLI, 10+ releases — plus Signet ships' },
+                { when: 'Now', what: 'Open to what’s next', note: 'React/TypeScript roles where AI-native engineering matters', hot: true },
+              ].map((t) => (
+                <div className={`tl-item${t.hot ? ' hot' : ''}`} key={t.when + t.what}>
+                  <span className="tl-dot" />
+                  <span className="tl-when">{t.when}</span>
+                  <span className="tl-body"><b>{t.what}</b><span>{t.note}</span></span>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="about-side">
             <div className="avatar-card rv" data-d="1" aria-hidden="true">
