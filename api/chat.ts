@@ -112,7 +112,7 @@ export default async function handler(req: any, res: any) {
     if (ANTHROPIC_API_KEY) {
       reply = await viaAnthropic(messages)
     } else if (GROQ_API_KEY) {
-      reply = await viaOpenAICompat(messages, 'https://api.groq.com/openai/v1/chat/completions', GROQ_API_KEY, 'llama-3.3-70b-versatile')
+      reply = await viaOpenAICompat(messages, 'https://api.groq.com/openai/v1/chat/completions', GROQ_API_KEY, 'openai/gpt-oss-120b')
     } else if (GEMINI_API_KEY) {
       reply = await viaGemini(messages, GEMINI_API_KEY)
     } else if (OPENROUTER_API_KEY) {
