@@ -52,7 +52,8 @@ portfolio-v3/
                                 # About, Contact, Footer, ChatWidget, …
 ```
 
-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
+
+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
 
 
 ## Deploying (Vercel)
