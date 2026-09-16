@@ -59,7 +59,7 @@ export default function Nav() {
             </svg>
           )}
         </button>
-        <a className="nav-cta" href="#contact"><span className="dot" /> Hire me</a>
+        <a className="nav-cta" href="#contact"><span className="dot" /> Let's talk</a>
         <button
           className="burger"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -85,7 +85,7 @@ export default function Nav() {
         <a href="#skills">Skills <span>04</span></a>
         <a href="#about">About <span>05</span></a>
         <a href={RESUME_URL} target="_blank" rel="noopener">Resume <span>PDF</span></a>
-        <a className="mm-cta" href="#contact">● Hire me</a>
+        <a className="mm-cta" href="#contact">● Let's talk</a>
       </nav>
     </header>
   )
