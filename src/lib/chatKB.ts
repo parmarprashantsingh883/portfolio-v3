@@ -52,7 +52,7 @@ export const KB: KBEntry[] = [
     keys: ['who', 'about', 'prashant', 'introduce', 'introduction', 'yourself', 'himself', 'summary'],
     phrases: ['tell me about', 'who is'],
     answer:
-      "**Prashant Parmar** is a frontend engineer from Ahmedabad, India. By day he ships production code on **DWERP**, a live multi-tenant enterprise ERP (React 19 + TypeScript strict). Beyond work he finishes what he starts: **Quarters**, a deployed multi-tenant SaaS, and **ai-diff-check**, an npm-published CLI — both built solo.\nHis edge: **AI-powered development** with real engineering discipline.",
+      "**Prashant Parmar** is a software engineer from Ahmedabad, India. By day he ships production code on **DWERP**, a live multi-tenant enterprise ERP (React 19 + TypeScript strict). Beyond work he finishes what he starts: **Quarters**, a deployed multi-tenant SaaS, and **ai-diff-check**, an npm-published CLI — both built solo.\nHis edge: **AI-powered development** with real engineering discipline.",
     chips: ['What does he do at MSBC?', 'Show me his projects', 'His AI workflow'],
   },
   {
@@ -154,7 +154,7 @@ export const KB: KBEntry[] = [
     keys: ['availability', 'interview'],
     phrases: ['open to work', 'looking for'],
     answer:
-      "He's **open to frontend engineering opportunities** — especially React/TypeScript roles where AI-powered development is valued. The fastest way to talk: email **[parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)** or call **+91-9574028096**.\n(For compensation questions — that's a conversation for him, not me 😄)",
+      "He's **open to software / frontend engineering roles** — especially React/TypeScript roles where AI-powered development is valued. The fastest way to talk: email **[parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)** or call **+91-9574028096**.\n(For compensation questions — that's a conversation for him, not me 😄)",
     chips: ['Contact him', 'Download resume', 'Why hire him?'],
   },
   {

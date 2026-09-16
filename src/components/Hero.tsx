@@ -12,14 +12,14 @@ export default function Hero() {
   return (
     <section className="hero wrap">
       <span className="hero-pill">
-        <span className="dot" /> Frontend Engineer · Open to opportunities · Ahmedabad, India
+        <span className="dot" /> Software Engineer · Open to opportunities · Ahmedabad, India
       </span>
       <h1 className="hero-h">
         <span className="row"><span style={{ animationDelay: '.55s' }}>I design &amp; build</span></span>
         <span className="row"><span style={{ animationDelay: '.7s' }}><span className="spin" id="spin">products.</span></span></span>
       </h1>
       <p className="hero-sub">
-        I'm Prashant, a frontend engineer from Ahmedabad. Days go into a <b>live enterprise ERP</b> (React 19, strict
+        I'm Prashant, a software engineer from Ahmedabad. Days go into a <b>live enterprise ERP</b> (React 19, strict
         TypeScript). Evenings go into my own things — <b>a SaaS that's actually deployed</b> and an open-source CLI. AI
         agents help me move fast; <b>I make sure nothing sloppy ships</b>.
       </p>

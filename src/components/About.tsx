@@ -11,7 +11,7 @@ export default function About() {
         </div>
         <div className="about-grid">
           <div className="rv">
-            <p className="about-lead">A frontend engineer who loves the <em>whole craft</em> — from the first wireframe to the last loading state.</p>
+            <p className="about-lead">A software engineer who loves the <em>whole craft</em> — from the first wireframe to the last loading state.</p>
             <p className="about-p">By day I build <b>DWERP</b>, an enterprise multi-tenant ERP, where I've shipped access control, multi-region configuration and reusable component systems in React 19 + strict TypeScript. By night I build my own things — <b>Quarters</b>, a SaaS running in production, and <b>ai-diff-check</b>, an open-source CLI.</p>
             <p className="about-p">I sweat the details users feel: fast loads, smooth motion, forms that guide instead of fight, and layouts that work on any screen. And my edge with <b>AI-powered development</b> isn't using the tools — it's directing them: I work with agents the way a tech lead reviews a fast junior, delegating execution and gatekeeping the output against what "good" actually looks like. Clean git history, reviewed PRs and repeatable playbooks keep it shippable to a <b>team</b>, not just working on my machine.</p>
             <p className="about-p">My path: <b>BCA at Silver Oak University (8.6 CGPA)</b> → intensive <b>MERN training at Tops Technologies</b> → building an enterprise ERP at <b>MSBC Group</b> — while shipping side projects the whole way.</p>
