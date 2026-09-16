@@ -1,4 +1,5 @@
 import { MailIcon, DocIcon, GithubIcon, LinkedinIcon, PinIcon } from './icons'
+import { RESUME_URL } from '../lib/paths'
 
 export default function Contact() {
   return (
@@ -13,7 +14,7 @@ export default function Contact() {
           </p>
           <div className="contact-cta">
             <a className="btn white" href="mailto:Parmarprashantsingh883@gmail.com"><MailIcon /> Email me</a>
-            <a className="btn glass" href="/resume.pdf" target="_blank" rel="noopener"><DocIcon /> View resume</a>
+            <a className="btn glass" href={RESUME_URL} target="_blank" rel="noopener"><DocIcon /> View resume</a>
             <a className="btn glass" href="tel:+919574028096">+91 95740 28096</a>
           </div>
           <div className="contact-links">

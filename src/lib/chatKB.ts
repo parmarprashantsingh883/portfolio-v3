@@ -1,6 +1,7 @@
 /* Knowledge base for the portfolio AI assistant.
    Answers support a markdown-lite subset rendered by ChatWidget:
    **bold**, [text](url), and \n line breaks. */
+import { RESUME_URL } from './paths'
 
 export type KBEntry = {
   id: string
@@ -123,14 +124,14 @@ export const KB: KBEntry[] = [
     keys: ['contact', 'linkedin', 'whatsapp', 'number', 'mobile', 'telephone'],
     phrases: ['get in touch', 'talk to him'],
     answer:
-      '📧 **Email:** [parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)\n📱 **Phone:** [+91-9574028096](tel:+919574028096)\n🐙 **GitHub:** [github.com/parmarprashantsingh883](https://github.com/parmarprashantsingh883)\n📄 **Resume:** [download the PDF](/resume.pdf)\nHe responds fast — reach out!',
+      '📧 **Email:** [parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)\n📱 **Phone:** [+91-9574028096](tel:+919574028096)\n🐙 **GitHub:** [github.com/parmarprashantsingh883](https://github.com/parmarprashantsingh883)\n📄 **Resume:** [download the PDF](' + RESUME_URL + ')\nHe responds fast — reach out!',
     chips: ['Is he available for hire?', 'Download resume'],
   },
   {
     id: 'resume',
     keys: ['resume', 'download'],
     answer:
-      'Here you go — **[open his resume (PDF)](/resume.pdf)**. It covers his DWERP production experience, AI-powered development workflow, projects and education on two tidy pages.',
+      'Here you go — **[open his resume (PDF)](' + RESUME_URL + ')**. It covers his DWERP production experience, AI-powered development workflow, projects and education on two tidy pages.',
     chips: ['Contact him', 'His experience'],
   },
   {

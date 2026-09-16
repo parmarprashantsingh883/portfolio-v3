@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { RESUME_URL } from '../lib/paths'
 
 type Item = {
   id: string
@@ -108,7 +109,7 @@ export default function CommandPalette() {
         },
       },
       { id: 'resume', label: 'Open résumé (PDF)', hint: 'File', icon: I.doc, run: () => {
-          window.open('/resume.pdf', '_blank')
+          window.open(RESUME_URL, '_blank')
         } },
       {
         id: 'email',

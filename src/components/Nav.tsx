@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from '../hooks/useTheme'
+import { RESUME_URL } from '../lib/paths'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -39,7 +40,7 @@ export default function Nav() {
           <a href="#ai">AI</a>
           <a href="#skills">Skills</a>
           <a href="#about">About</a>
-          <a href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <a href={RESUME_URL} target="_blank" rel="noopener">Resume</a>
         </nav>
         <button
           className="theme-btn"
@@ -83,7 +84,7 @@ export default function Nav() {
         <a href="#ai">AI Development <span>03</span></a>
         <a href="#skills">Skills <span>04</span></a>
         <a href="#about">About <span>05</span></a>
-        <a href="/resume.pdf" target="_blank" rel="noopener">Resume <span>PDF</span></a>
+        <a href={RESUME_URL} target="_blank" rel="noopener">Resume <span>PDF</span></a>
         <a className="mm-cta" href="#contact">● Hire me</a>
       </nav>
     </header>

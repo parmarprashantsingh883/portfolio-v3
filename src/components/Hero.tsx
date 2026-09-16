@@ -1,4 +1,5 @@
 import { GithubIcon, LinkedinIcon, MailIcon, ArrowIcon, DownloadIcon } from './icons'
+import { RESUME_URL } from '../lib/paths'
 
 const CHIPS = [
   { label: 'React 19', depth: 18, style: { top: '26%', left: '7%', animationDelay: '1.7s' } },
@@ -26,7 +27,7 @@ export default function Hero() {
         <a className="btn dark" href="#work">
           See my work <ArrowIcon />
         </a>
-        <a className="btn line" href="/resume.pdf" target="_blank" rel="noopener">
+        <a className="btn line" href={RESUME_URL} target="_blank" rel="noopener">
           <DownloadIcon /> Resume
         </a>
         <a className="btn line" href="#contact">Get in touch</a>
@@ -35,7 +36,7 @@ export default function Hero() {
         <span className="qr-label">In a hurry?</span>
         <button className="qr-link" onClick={() => window.dispatchEvent(new Event('pf-open-summary'))}>30-sec summary</button>
         <span className="qr-sep">·</span>
-        <a className="qr-link" href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a className="qr-link" href={RESUME_URL} target="_blank" rel="noopener">Resume</a>
         <span className="qr-sep">·</span>
         <button className="qr-link" onClick={() => window.dispatchEvent(new Event('pf-open-chat'))}>Ask my AI</button>
         <span className="qr-sep">·</span>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { RESUME_URL } from '../lib/paths'
 
 /* 30-second summary overlay — the "I'm in a hurry" path for recruiters.
    Opens via the hero quick-start row or the pf-open-summary event. */
@@ -36,7 +37,7 @@ export default function QuickSummary() {
           </ul>
         </div>
         <div className="qsum-actions">
-          <a className="btn dark" href="/resume.pdf" target="_blank" rel="noopener" onClick={() => setOpen(false)}>Resume PDF</a>
+          <a className="btn dark" href={RESUME_URL} target="_blank" rel="noopener" onClick={() => setOpen(false)}>Resume PDF</a>
           <a className="btn line" href="mailto:parmarprashantsingh883@gmail.com">Email him</a>
           <button
             className="btn line"
