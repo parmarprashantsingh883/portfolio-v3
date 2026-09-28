@@ -1,6 +1,21 @@
 const D = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons'
 const drop = (e: React.SyntheticEvent<HTMLImageElement>) => e.currentTarget.remove()
 
+type Step = { when: string; what: string; org?: string; note: string; tag?: string; hot?: boolean; now?: boolean }
+const JOURNEY: Step[] = [
+  { when: '2023 – 25', what: 'Bachelor of Computer Application', org: 'Silver Oak University', note: 'CS foundations — where the rabbit hole began.', tag: '8.6 CGPA' },
+  { when: '2025', what: 'MERN Stack Development', org: 'Tops Technologies', note: 'Intensive full-stack program — React, Node, the modern toolchain.', tag: 'Upskilling' },
+  { when: 'Mar 2026 – Present', what: 'Software Development Engineer', org: 'MSBC Group', note: 'Building DWERP — a live multi-tenant enterprise ERP in React 19 + strict TypeScript.', tag: 'Current role', hot: true },
+  { when: 'Now', what: 'Open to what’s next', org: 'React / TypeScript roles', note: 'Where AI-native engineering and product craft matter.', tag: 'Available', now: true },
+]
+
+type Build = { name: string; when: string; note: string }
+const BUILDS: Build[] = [
+  { name: 'Quarters', when: 'Jun 2026 · Live', note: 'Multi-tenant SaaS — built & deployed solo, in production.' },
+  { name: 'ai-diff-check', when: 'Jul 2026 · npm', note: 'Open-source CLI, 10+ releases — a “vibe check” for AI diffs.' },
+  { name: 'Signet & Clovers', when: '2026', note: 'More full-stack builds — from an e-commerce store to product tooling.' },
+]
+
 export default function About() {
   return (
     <section className="pad" id="about" style={{ paddingTop: 30 }}>
@@ -17,23 +32,6 @@ export default function About() {
             <p className="about-p">My path: <b>BCA at Silver Oak University (8.6 CGPA)</b> → intensive <b>MERN training at Tops Technologies</b> → building an enterprise ERP at <b>MSBC Group</b> — while shipping side projects the whole way.</p>
             <p className="about-p">A few opinions I've earned so far: loading and empty states are half of UX, <b>strict TypeScript beats optimism</b>, and a form that fights the user is a bug even when the code is "correct". Off the clock it's chai, side-project rabbit holes, and an unreasonable number of open tabs.</p>
 
-            <div className="timeline rv" data-d="1">
-              <h4 className="tl-title">The journey so far</h4>
-              {[
-                { when: '2023', what: 'Started BCA', note: 'Silver Oak University — where the rabbit hole began' },
-                { when: '2025', what: 'BCA done (8.6 CGPA) + MERN program', note: 'Tops Technologies — full-stack foundations' },
-                { when: 'Mar 2026', what: 'SDE at MSBC Group', note: 'Shipping to DWERP — a live enterprise ERP in production', hot: true },
-                { when: 'Jun 2026', what: 'Quarters goes live', note: 'Multi-tenant SaaS built & deployed solo' },
-                { when: 'Jul 2026', what: 'ai-diff-check on npm', note: 'Open-source CLI, 10+ releases — plus Signet ships' },
-                { when: 'Now', what: 'Open to what’s next', note: 'React/TypeScript roles where AI-native engineering matters', hot: true },
-              ].map((t) => (
-                <div className={`tl-item${t.hot ? ' hot' : ''}`} key={t.when + t.what}>
-                  <span className="tl-dot" />
-                  <span className="tl-when">{t.when}</span>
-                  <span className="tl-body"><b>{t.what}</b><span>{t.note}</span></span>
-                </div>
-              ))}
-            </div>
           </div>
           <div className="about-side">
             <div className="avatar-card rv" data-d="1" aria-hidden="true">
@@ -73,6 +71,40 @@ export default function About() {
               <div className="edu"><div className="d">Bachelor of Computer Application</div><div className="m"><span>Silver Oak University</span><b>2023–2025</b></div><div className="m"><span>CGPA</span><b>8.6</b></div></div>
               <div className="edu"><div className="d">MERN Stack Development Program</div><div className="m"><span>Tops Technologies, Ahmedabad</span><b>2025</b></div></div>
               <div className="side-langs"><b>Languages</b> — English (Proficient) · Hindi (Native) · Gujarati (Basic)</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="xflow rv" data-d="1">
+          <h4 className="tl-title">The journey so far</h4>
+          <div className="xflow-track">
+            {JOURNEY.map((s, i) => (
+              <div className="xflow-step" key={s.when + s.what}>
+                <div className={`xnode${s.hot ? ' hot' : ''}${s.now ? ' now' : ''}`}>
+                  <span className="xnode-yr"><span className="xdot" />{s.when}</span>
+                  <b className="xnode-role">{s.what}</b>
+                  {s.org && <span className="xnode-org">{s.org}</span>}
+                  <span className="xnode-note">{s.note}</span>
+                  {s.tag && <span className="xnode-tag"><span>{s.tag}</span></span>}
+                </div>
+                {i < JOURNEY.length - 1 && (
+                  <span className="xarrow" aria-hidden="true">
+                    <svg viewBox="0 0 42 20" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round"><path d="M2 10h34M30 4l6 6-6 6" /></svg>
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="xflow-builds">
+            <div className="lead">Shipped alongside the day job</div>
+            <div className="xbuilds">
+              {BUILDS.map((b) => (
+                <div className="xbuild" key={b.name}>
+                  <h5>{b.name}</h5>
+                  <div className="m">{b.when}</div>
+                  <p>{b.note}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

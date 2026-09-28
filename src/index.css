@@ -785,6 +785,51 @@ section[id]{scroll-margin-top:86px}
 .tl-body span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
 @media (max-width:640px){.tl-when{width:60px;font-size:10.5px}}
 
+/* ---------- career flow chart (full-width journey) ---------- */
+.xflow{margin-top:40px}
+.xflow-track{display:flex;align-items:stretch;overflow-x:auto;padding:6px 2px 16px;-webkit-overflow-scrolling:touch}
+.xflow-step{display:flex;align-items:center;flex:0 0 auto}
+.xnode{width:224px;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:16px 16px 14px;display:flex;flex-direction:column;min-height:164px;
+  box-shadow:0 1px 2px rgba(14,17,22,.04),0 12px 28px -18px rgba(14,17,22,.28)}
+.xnode-yr{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;
+  font-weight:600;letter-spacing:.03em;color:var(--faint);margin-bottom:11px}
+.xdot{width:8px;height:8px;border-radius:50%;background:var(--line-2);flex:none}
+.xnode-role{font-family:var(--disp);font-size:15.5px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.24}
+.xnode-org{font-size:13px;font-weight:600;color:var(--body);margin-top:3px}
+.xnode-note{font-size:12.5px;color:var(--muted);margin-top:8px}
+.xnode-tag{margin-top:auto;padding-top:12px}
+.xnode-tag span{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 9px}
+.xnode.hot{border-color:var(--accent-line)}
+.xnode.hot .xnode-yr{color:var(--accent)}
+.xnode.hot .xdot{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.xnode.hot .xnode-tag span{color:#fff;background:var(--accent);border-color:var(--accent)}
+.xnode.now{background:var(--accent);border-color:var(--accent)}
+.xnode.now .xnode-role,.xnode.now .xnode-org{color:#fff}
+.xnode.now .xnode-yr{color:rgba(255,255,255,.92)}
+.xnode.now .xnode-note{color:rgba(255,255,255,.86)}
+.xnode.now .xdot{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.22)}
+.xnode.now .xnode-tag span{color:#fff;border-color:rgba(255,255,255,.4)}
+.xarrow{flex:0 0 auto;width:40px;display:flex;align-items:center;justify-content:center;color:var(--line-2)}
+.xarrow svg{width:38px;height:18px}
+.xflow-builds{margin-top:22px}
+.xflow-builds .lead{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;
+  font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.xflow-builds .lead::before{content:"";width:13px;height:13px;flex:none;border-left:2px solid var(--line-2);
+  border-bottom:2px solid var(--line-2);border-radius:0 0 0 5px}
+.xbuilds{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.xbuild{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 15px}
+.xbuild h5{margin:0 0 3px;font-family:var(--disp);font-size:14.5px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.xbuild .m{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--accent);letter-spacing:.05em;margin-bottom:7px}
+.xbuild p{margin:0;font-size:12px;color:var(--muted)}
+@media (max-width:720px){
+  .xflow-track{flex-direction:column;overflow:visible}
+  .xflow-step{flex-direction:column;width:100%}
+  .xnode{width:100%;min-height:0}
+  .xarrow{width:100%;height:28px;transform:rotate(90deg)}
+}
+
 /* ---------- hero quick-start row + 30-sec summary ---------- */
 .quick-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px;
   font-size:13.5px;color:var(--faint);opacity:0;animation:up .7s var(--ease) forwards}
