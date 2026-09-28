@@ -8,9 +8,11 @@
      GEMINI_API_KEY       aistudio.google.com/apikey     (FREE tier)
      OPENROUTER_API_KEY   openrouter.ai/settings/keys    (free models available)
 
-   CHAT_MODEL optionally overrides the provider's default model. */
-import Anthropic from '@anthropic-ai/sdk'
+   CHAT_MODEL optionally overrides the provider's default model.
 
+   NOTE: the Anthropic SDK is imported lazily (only when ANTHROPIC_API_KEY is
+   set) so a cold start on the Groq/Gemini/OpenRouter path never loads it —
+   a top-level import was crashing the function (FUNCTION_INVOCATION_FAILED). */
 import { SYSTEM } from '../src/lib/chatPersona'
 
 const MAX_CHARS = 600
@@ -19,6 +21,7 @@ type Msg = { role: 'user' | 'assistant'; content: string }
 /* ---------- providers ---------- */
 
 async function viaAnthropic(messages: Msg[]): Promise<string | null> {
+  const { default: Anthropic } = await import('@anthropic-ai/sdk')
   const client = new Anthropic()
   const response = await client.messages.create({
     model: process.env.CHAT_MODEL || 'claude-opus-4-8',
@@ -28,8 +31,8 @@ async function viaAnthropic(messages: Msg[]): Promise<string | null> {
   })
   if (response.stop_reason === 'refusal') return null
   return response.content
-    .filter((b): b is Anthropic.TextBlock => b.type === 'text')
-    .map((b) => b.text)
+    .filter((b: any) => b.type === 'text')
+    .map((b: any) => b.text)
     .join('')
     .trim()
 }
@@ -81,7 +84,14 @@ export default async function handler(req: any, res: any) {
     return
   }
 
-  const body = typeof req.body === 'object' && req.body !== null ? req.body : {}
+  let body: any = typeof req.body === 'object' && req.body !== null ? req.body : {}
+  if (typeof req.body === 'string') {
+    try {
+      body = JSON.parse(req.body)
+    } catch {
+      body = {}
+    }
+  }
   const raw = Array.isArray(body.messages) ? body.messages : []
   const messages: Msg[] = raw
     .filter(
@@ -112,11 +122,8 @@ export default async function handler(req: any, res: any) {
       return
     }
     res.status(200).json({ reply: reply || null })
-  } catch (error) {
-    if (error instanceof Anthropic.RateLimitError) {
-      res.status(429).json({ error: 'rate limited' })
-    } else {
-      res.status(502).json({ error: 'upstream error' })
-    }
+  } catch (error: any) {
+    const status = error?.status === 429 ? 429 : 502
+    res.status(status).json({ error: status === 429 ? 'rate limited' : 'upstream error', detail: String(error?.message || error) })
   }
 }
