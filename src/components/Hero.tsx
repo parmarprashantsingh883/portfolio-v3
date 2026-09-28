@@ -19,9 +19,10 @@ export default function Hero() {
         <span className="row"><span style={{ animationDelay: '.7s' }}><span className="spin" id="spin">products.</span></span></span>
       </h1>
       <p className="hero-sub">
-        I'm Prashant, a software engineer from Ahmedabad. Days go into a <b>live enterprise ERP</b> (React 19, strict
-        TypeScript). Evenings go into my own things — <b>a SaaS that's actually deployed</b> and an open-source CLI. AI
-        agents help me move fast; <b>I make sure nothing sloppy ships</b>.
+        I'm Prashant, a <b>full-stack engineer</b> from Ahmedabad — React &amp; Node, TypeScript throughout, with my
+        sharpest edge in the frontend. Days go into a <b>live enterprise ERP</b>; evenings into my own things — <b>a
+        MERN SaaS that's actually deployed</b> (React · Node · MongoDB) and an open-source CLI. AI agents help me move
+        fast; <b>I make sure nothing sloppy ships</b>.
       </p>
       <div className="hero-cta">
         <a className="btn dark" href="#work">

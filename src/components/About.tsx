@@ -6,7 +6,7 @@ const JOURNEY: Step[] = [
   { when: '2023 – 25', what: 'Bachelor of Computer Application', org: 'Silver Oak University', note: 'CS foundations — where the rabbit hole began.', tag: '8.6 CGPA' },
   { when: '2025', what: 'MERN Stack Development', org: 'Tops Technologies', note: 'Intensive full-stack program — React, Node, the modern toolchain.', tag: 'Upskilling' },
   { when: 'Mar 2026 – Present', what: 'Software Development Engineer', org: 'MSBC Group', note: 'Building DWERP — a live multi-tenant enterprise ERP in React 19 + strict TypeScript.', tag: 'Current role', hot: true },
-  { when: 'Now', what: 'Open to what’s next', org: 'React / TypeScript roles', note: 'Where AI-native engineering and product craft matter.', tag: 'Available', now: true },
+  { when: 'Now', what: 'Open to what’s next', org: 'Full-stack & frontend roles', note: 'React & Node — where AI-native engineering and product craft matter.', tag: 'Available', now: true },
 ]
 
 type Build = { name: string; when: string; note: string }

@@ -5,12 +5,12 @@ const rc = (c: string) => ({ '--rc': c }) as CSSProperties
 const cc = (c: string) => ({ '--c': c }) as CSSProperties
 
 const BULLETS = [
+  <>Ship <b>full-stack features end-to-end</b> — from React grids and typed forms down to <b>Django / DRF services, PostgreSQL migrations and REST endpoints</b>. Frontend is my craft; for the backend I <b>direct AI agents and review &amp; verify every change</b> before it merges.</>,
+  <>Delivered end-to-end flows on the live product — <b>Goods-Receipt (GRN)</b>, <b>PO detail + landscape PDF</b>, <b>Job/Order confirmation PDF &amp; client email</b>, and a shared catalogue-master <b>&ldquo;Used Count&rdquo;</b> service — backend service + migration through to the React UI.</>,
   <>Built the <b>RBAC access-management UI</b> — permission gating for modules, routes and actions across all <b>5 ERP modules</b>.</>,
   <>Delivered <b>country-aware tax, bank &amp; address configuration</b> for 4 regions (IN · UK · US · AUS) with typed React Hook Form + Zod flows.</>,
-  <>Refactored brittle screens into <b>reusable typed components</b> and aligned frontend contracts to the API — killing a recurring class of HTTP 400s.</>,
-  <>Own features from spec to release: <b>PRD gap analysis, PR reviews</b>, and every change gated by strict tsc, Vitest &amp; Playwright.</>,
-  <><b>Debug &amp; root-cause production issues</b> through the component tree, the TanStack Query data layer and REST API contracts — fixing causes, not symptoms.</>,
-  <>Triage QA reports into <b>frontend vs backend defects</b> and turn them into reviewed, test-passing PRs — accelerated by an AI-assisted workflow.</>,
+  <><b>Debug &amp; root-cause production issues</b> across the component tree, the TanStack Query data layer, REST API contracts and the backend service layer — fixing causes, not symptoms.</>,
+  <>Own features from <b>spec to release</b>: PRD gap analysis, PR reviews, and every change gated by strict tsc, Vitest &amp; Playwright — then verified live in a real browser.</>,
 ]
 
 export default function Experience() {
@@ -32,7 +32,7 @@ export default function Experience() {
             </div>
           </div>
           <p className="xp-ctx">
-            <b style={{ color: 'var(--ink)' }}>DWERP</b> — a <b style={{ color: 'var(--ink)' }}>real commercial product</b>, not a demo: a live, enterprise multi-tenant SaaS ERP built by MSBC Group for the fenestration &amp; glass industry, which manufacturing teams run their business on every day — sales, inventory, production, delivery and finance. React 19 · TypeScript (strict) · Vite · Tailwind · TanStack Query v5.
+            <b style={{ color: 'var(--ink)' }}>DWERP</b> — a <b style={{ color: 'var(--ink)' }}>real commercial product</b>, not a demo: a live, enterprise multi-tenant SaaS ERP built by MSBC Group for the fenestration &amp; glass industry, which manufacturing teams run their business on every day — sales, inventory, production, delivery and finance. My core craft is the frontend — React 19 · TypeScript (strict) · Vite · Tailwind · TanStack Query v5 — and I increasingly work <b style={{ color: 'var(--ink)' }}>full-stack</b>: extending features into the Django · DRF · PostgreSQL backend by directing AI agents, then reviewing, migrating and verifying every change before it ships.
           </p>
 
           <div className="xp-roles">
@@ -42,7 +42,7 @@ export default function Experience() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9}><path d="m8 9-3 3 3 3M16 9l3 3-3 3M13.5 6l-3 12" /></svg>
               </span>
               <h5>Develop</h5>
-              <p>Ship features end-to-end on a live product — RBAC screens, typed forms, data layers and multi-region configuration.</p>
+              <p>Ship features end-to-end — React screens, typed forms and data layers, plus AI-directed Django/DRF + Postgres changes when a feature reaches the backend.</p>
             </div>
             <div className="xp-role-card" style={rc('#0eaa5f')}>
               <span className="k">02</span>

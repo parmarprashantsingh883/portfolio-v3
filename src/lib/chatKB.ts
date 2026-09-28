@@ -154,7 +154,7 @@ export const KB: KBEntry[] = [
     keys: ['availability', 'interview'],
     phrases: ['open to work', 'looking for'],
     answer:
-      "He's **open to software / frontend engineering roles** — especially React/TypeScript roles where AI-powered development is valued. The fastest way to talk: email **[parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)** or call **+91-9574028096**.\n(For compensation questions — that's a conversation for him, not me 😄)",
+      "He's **open to full-stack & frontend engineering roles** — React/TypeScript on the front, Node/Express/MongoDB on the back, especially where AI-powered development is valued. The fastest way to talk: email **[parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)** or call **+91-9574028096**.\n(For compensation questions — that's a conversation for him, not me 😄)",
     chips: ['Contact him', 'Download resume', 'Why hire him?'],
   },
   {
@@ -259,7 +259,7 @@ export const SKILL_FACTS: Record<string, SkillFact> = {
   rbac: { known: true, text: 'Yes — he built the **RBAC access-management UI** across all 5 DWERP modules; Signet is RBAC-gated too.' },
   aidev: { known: true, text: '**AI-Assisted Development is his headline skill.** He directs **Claude Code & GitHub Copilot** like a tech lead — custom agents & subagents, prompt/context engineering, MCP integrations — on live production work, with every change gated by `tsc` + Vitest/Playwright. He even built **ai-diff-check** (npm) to review AI-written code.' },
   // honest gaps — no pretending
-  nextjs: { known: false, text: '**Next.js isn\'t in his shipped stack yet** — his depth is React 19 SPAs on Vite. The fundamentals (routing, data fetching, rendering trade-offs) transfer fast, and he picks up new stacks quickly with his AI-assisted workflow.' },
+  nextjs: { known: false, text: '**Next.js isn\'t in his shipped stack yet** — his depth is React 19 SPAs (Vite) on the front and **Node/Express/MongoDB APIs** on the back (deployed in Quarters). The Next.js fundamentals (routing, data fetching, rendering trade-offs) transfer fast, and he picks up new stacks quickly with his AI-assisted workflow.' },
   angular: { known: false, text: 'Angular isn\'t his stack — he\'s deep in **React**. Component architecture transfers, but React is where his receipts are.' },
   vue: { known: false, text: 'Vue isn\'t his stack — he\'s deep in **React**. The reactive-UI concepts transfer, but React is where his receipts are.' },
   svelte: { known: false, text: 'No Svelte projects yet — his depth is **React**. He\'d ramp quickly, but React is where the shipped work is.' },

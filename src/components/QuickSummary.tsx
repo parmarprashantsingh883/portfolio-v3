@@ -29,7 +29,7 @@ export default function QuickSummary() {
           </button>
         </div>
         <div className="qsum-body">
-          <p><b>Software engineer, Ahmedabad</b> — React 19 + TypeScript strict.</p>
+          <p><b>Full-stack engineer, Ahmedabad</b> — MERN (React · Node · MongoDB), TypeScript strict; frontend is his sharpest edge.</p>
           <ul>
             <li><b>Live production experience</b> — ships daily to DWERP, an enterprise ERP real businesses run on (MSBC Group, Mar 2026–present)</li>
             <li><b>Finishes what he starts</b> — Quarters (multi-tenant SaaS, deployed solo) and ai-diff-check (npm-published CLI, 10+ releases)</li>
