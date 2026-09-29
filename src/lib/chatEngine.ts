@@ -111,6 +111,14 @@ function opinionAnswer(q: string, raw: string[]): BotReply | null {
       chips: ['Why hire him?', 'His projects', 'Contact him'],
     }
   }
+  // "biggest weakness / limitation / downside / red flag / why NOT hire" — honest, grounded
+  if (/\b(weakness|weaknesses|limitation|limitations|downside|downsides|drawback|drawbacks|red ?flags?|weak (spot|point|area)s?)\b/i.test(q) || /\b(why (not|shouldn'?t)|reasons? not to|not to)\b[^.]*\bhire\b/i.test(q)) {
+    return {
+      text:
+        "Straight answer, no spin:\n→ **Early-career on paper** — professional tenure since **March 2026** — so he lets **output** carry the case: a live enterprise ERP, a deployed multi-tenant SaaS, an npm-published CLI.\n→ **A few stacks he hasn't shipped yet** — Next.js, GraphQL, native mobile. His depth is React SPAs (Vite) on the front, Node/Express/MongoDB on the back.\nThe flip side: he ramps fast with his AI-assisted workflow, and nothing ships without strict types + tests. Best way to judge — [talk to him](mailto:parmarprashantsingh883@gmail.com).",
+      chips: ['What he IS deep in', 'Why hire him?', 'His projects'],
+    }
+  }
   // "should I hire / would you recommend / worth interviewing / good fit"
   if (/\b(recommend|should (i|we) (hire|interview|consider)|worth (hiring|interviewing|a look)|good fit|hire him)\b/i.test(q)) {
     return {
@@ -123,7 +131,7 @@ function opinionAnswer(q: string, raw: string[]): BotReply | null {
   if (/\b(how good|is he (good|talented|skilled|smart|any good)|what do you think (of|about)|your opinion)\b/i.test(q)) {
     return {
       text:
-        "Genuinely good — and I can point at evidence rather than adjectives:\n→ his code runs in a **live enterprise ERP** that real businesses use daily\n→ he's **deployed a whole SaaS solo** (frontend, API, database)\n→ his npm CLI has **10+ releases** and real users\nHonest caveat: he's early-career on paper. Judged on **output**, he plays above the title.",
+        "Genuinely good — and I can point at evidence rather than adjectives:\n→ his code runs in a **live enterprise ERP** that real businesses use daily\n→ he's **deployed a whole SaaS solo** (frontend, API, database)\n→ his npm CLI has **3,000+ downloads** and real users\nHonest caveat: he's early-career on paper. Judged on **output**, he plays above the title.",
       chips: ['Rate him /10', 'Why hire him?', 'His projects'],
     }
   }

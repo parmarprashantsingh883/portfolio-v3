@@ -58,7 +58,7 @@ const PROJECTS: Project[] = [
     accent: '#7c5cff',
     title: 'ai-diff-check',
     badge: { label: 'Open source', kind: 'oss' },
-    role: 'CLI · code-quality tooling · 10+ releases',
+    role: 'CLI · code-quality tooling · 3,000+ downloads',
     desc: "A CLI that reviews AI-written diffs before they're committed — my answer to shipping AI code responsibly.",
     points: [
       <><b>Published on npm</b> — runs with a single <b>npx ai-diff-check</b></>,

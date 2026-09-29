@@ -12,7 +12,7 @@ const JOURNEY: Step[] = [
 type Build = { name: string; when: string; note: string }
 const BUILDS: Build[] = [
   { name: 'Quarters', when: 'Jun 2026 · Live', note: 'Multi-tenant SaaS — built & deployed solo, in production.' },
-  { name: 'ai-diff-check', when: 'Jul 2026 · npm', note: 'Open-source CLI, 10+ releases — a “vibe check” for AI diffs.' },
+  { name: 'ai-diff-check', when: 'Jul 2026 · npm', note: 'Open-source CLI, 3,000+ downloads — a “vibe check” for AI diffs.' },
   { name: 'Signet & Clovers', when: '2026', note: 'More full-stack builds — from an e-commerce store to product tooling.' },
 ]
 

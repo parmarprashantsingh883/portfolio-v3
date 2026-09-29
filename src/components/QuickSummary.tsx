@@ -32,7 +32,7 @@ export default function QuickSummary() {
           <p><b>Full-stack engineer, Ahmedabad</b> — MERN (React · Node · MongoDB), TypeScript strict; frontend is his sharpest edge.</p>
           <ul>
             <li><b>Live production experience</b> — ships daily to DWERP, an enterprise ERP real businesses run on (MSBC Group, Mar 2026–present)</li>
-            <li><b>Finishes what he starts</b> — Quarters (multi-tenant SaaS, deployed solo) and ai-diff-check (npm-published CLI, 10+ releases)</li>
+            <li><b>Finishes what he starts</b> — Quarters (multi-tenant SaaS, deployed solo) and ai-diff-check (npm CLI, 3,000+ downloads)</li>
             <li><b>AI-native, verification-first</b> — directs Claude Code &amp; Copilot like a tech lead; nothing ships without types + tests passing</li>
           </ul>
         </div>

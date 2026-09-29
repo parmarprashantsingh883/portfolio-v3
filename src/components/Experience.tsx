@@ -94,8 +94,8 @@ export default function Experience() {
           </div>
           <div className="stat rv" data-d="3" style={cc('#ff8a3d')}>
             <div className="stat-k">Open source</div>
-            <div className="v"><span data-count="10">0</span>+</div>
-            <div className="l">released versions of ai-diff-check, my code-review CLI</div>
+            <div className="v"><span data-count="3000">0</span>+</div>
+            <div className="l">downloads of ai-diff-check, my npm code-review CLI</div>
           </div>
         </div>
       </div>

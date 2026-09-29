@@ -88,7 +88,7 @@ export const KB: KBEntry[] = [
     keys: ['projects', 'shipped', 'showcase'],
     phrases: ['what has he built', 'side projects', 'other projects'],
     answer:
-      "First and foremost: **DWERP** — his **live production project** at MSBC Group. An enterprise multi-tenant ERP that real businesses run their operations on, built with React 19 + TypeScript strict. That's professional, in-production experience, not a portfolio piece.\nThen the solo builds:\n1. **Quarters** — multi-tenant hostel SaaS, **deployed & live** (React, Node/Express, MongoDB Atlas)\n2. **Signet** — enterprise-style IT asset platform with its own design system\n3. **ai-diff-check** — **npm-published** CLI that reviews AI-written code (10+ releases)\n4. **Clovers** — grocery e-commerce storefront\nAsk about any of them!",
+      "First and foremost: **DWERP** — his **live production project** at MSBC Group. An enterprise multi-tenant ERP that real businesses run their operations on, built with React 19 + TypeScript strict. That's professional, in-production experience, not a portfolio piece.\nThen the solo builds:\n1. **Quarters** — multi-tenant hostel SaaS, **deployed & live** (React, Node/Express, MongoDB Atlas)\n2. **Signet** — enterprise-style IT asset platform with its own design system\n3. **ai-diff-check** — **npm-published** CLI that reviews AI-written code (**3,000+ downloads**)\n4. **Clovers** — grocery e-commerce storefront\nAsk about any of them!",
     chips: ['His live project DWERP', 'Tell me about Quarters', 'What is ai-diff-check?'],
   },
   {
@@ -109,7 +109,7 @@ export const KB: KBEntry[] = [
     id: 'adc',
     keys: ['adc'],
     answer:
-      "**ai-diff-check** is Prashant's answer to shipping AI-generated code responsibly — a CLI that reviews AI-written diffs *before* they're committed.\n→ **Published on npm** — runs with a single `npx ai-diff-check` (10+ releases)\n→ Deterministic **AST analysis** — no cloud, no LLM required\n→ Flags duplicated logic, dead exports, stubbed error handling and untested changes\n**Stack:** TypeScript · Node.js · Vitest.",
+      "**ai-diff-check** is Prashant's answer to shipping AI-generated code responsibly — a CLI that reviews AI-written diffs *before* they're committed.\n→ **Published on npm** (v2.2.0) — `npx ai-diff-check`, **3,000+ downloads**\n→ Deterministic **AST analysis** — no cloud, no LLM required\n→ Flags duplicated logic, dead exports, stubbed error handling and untested changes\n**Stack:** TypeScript · Node.js · Vitest.",
     chips: ['His AI workflow', 'Other projects', 'GitHub'],
   },
   {
@@ -121,11 +121,19 @@ export const KB: KBEntry[] = [
   },
   {
     id: 'contact',
-    keys: ['contact', 'linkedin', 'whatsapp', 'number', 'mobile', 'telephone'],
+    keys: ['contact', 'whatsapp', 'number', 'mobile', 'telephone'],
     phrases: ['get in touch', 'talk to him'],
     answer:
-      '📧 **Email:** [parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)\n📱 **Phone:** [+91-9574028096](tel:+919574028096)\n🐙 **GitHub:** [github.com/parmarprashantsingh883](https://github.com/parmarprashantsingh883)\n📄 **Resume:** [download the PDF](' + RESUME_URL + ')\nHe responds fast — reach out!',
+      '📧 **Email:** [parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)\n📱 **Phone:** [+91-9574028096](tel:+919574028096)\n💼 **LinkedIn:** [linkedin.com/in/prashant-parmar](https://linkedin.com/in/prashant-parmar)\n🐙 **GitHub:** [github.com/parmarprashantsingh883](https://github.com/parmarprashantsingh883)\n📄 **Resume:** [download the PDF](' + RESUME_URL + ')\nHe responds fast — reach out!',
     chips: ['Is he available for hire?', 'Download resume'],
+  },
+  {
+    id: 'linkedin',
+    keys: ['linkedin', 'profile', 'social', 'socials', 'connect'],
+    phrases: ['linkedin profile', 'linkedin url', 'social media', 'his linkedin'],
+    answer:
+      '💼 His LinkedIn is **[linkedin.com/in/prashant-parmar](https://linkedin.com/in/prashant-parmar)** — connect or message him there.\n🐙 GitHub: **[github.com/parmarprashantsingh883](https://github.com/parmarprashantsingh883)**\nPrefer email? **[parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)**.',
+    chips: ['His GitHub', 'Contact him', 'His projects'],
   },
   {
     id: 'resume',
@@ -190,7 +198,7 @@ export const BRIEFS: Record<string, string> = {
   ai: '**AI workflow** — directs Claude Code/Copilot through the bug-to-PR cycle, gated by tsc + Vitest/Playwright',
   quarters: '**Quarters** — multi-tenant hostel SaaS designed, built & deployed solo (React, Node/Express, MongoDB Atlas): tenant isolation, billing, PDF receipts',
   signet: '**Signet** — enterprise-style IT asset platform (React 18 + TS strict): dashboard analytics, handover wizard with signed PDF, RBAC-gated',
-  adc: '**ai-diff-check** — npm-published CLI (`npx ai-diff-check`, 10+ releases) that reviews AI-written diffs via deterministic AST analysis',
+  adc: '**ai-diff-check** — npm-published CLI (`npx ai-diff-check`, 3,000+ downloads) that reviews AI-written diffs via deterministic AST analysis',
   clovers: '**Clovers** — grocery e-commerce storefront (React + REST) with cart & wishlist flows',
 }
 

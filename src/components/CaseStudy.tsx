@@ -62,7 +62,7 @@ export const STUDIES: Record<string, Study> = {
     ],
     arch: ['TypeScript CLI', 'AST parsing', 'Rule engine → report'],
     outcomes: [
-      'Published on npm — 10+ releases',
+      'Published on npm (v2.2.0) — 3,000+ downloads',
       'Verified on real projects: genuine detections, no false positives',
       'My answer to shipping AI-generated code responsibly',
     ],
