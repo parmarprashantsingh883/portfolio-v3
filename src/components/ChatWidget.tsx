@@ -1,6 +1,21 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { ask } from '../lib/chatEngine'
-import { DEFAULT_CHIPS, GREETING } from '../lib/chatKB'
+
+/* The chat engine (+ its knowledge base + persona) is the heaviest slice of the
+   page, but it's only needed once someone actually chats. Lazy-load it so it
+   stays out of the initial bundle; it's preloaded the moment the panel opens, so
+   the first reply has no extra wait. */
+type AskFn = (typeof import('../lib/chatEngine'))['ask']
+let askPromise: Promise<AskFn> | null = null
+const loadAsk = (): Promise<AskFn> => {
+  if (!askPromise) askPromise = import('../lib/chatEngine').then((m) => m.ask)
+  return askPromise
+}
+
+/* Inlined (not imported from chatKB) so that big module isn't dragged into the
+   initial bundle just to render the greeting. Keep in sync with chatKB. */
+const DEFAULT_CHIPS = ['What does he do?', 'Show me his projects', 'His AI workflow', 'How to contact him?']
+const GREETING =
+  "Hi! I'm **Prashant's AI assistant** — I know his work, projects and skills inside out. Ask me anything, or tap a suggestion below. 👇"
 
 type Msg = { role: 'user' | 'bot'; text: string; chips?: string[]; instant?: boolean }
 
@@ -111,6 +126,7 @@ export default function ChatWidget() {
     setOpen(true)
     setTease(false)
     sessionStorage.setItem('pf-teased', '1')
+    void loadAsk() // warm the engine chunk while they read the greeting
   }
 
   /* command palette → open chat */
@@ -147,6 +163,7 @@ export default function ChatWidget() {
     setMsgs((prev) => [...prev, { role: 'user', text: q }])
     setTyping(true)
     const started = performance.now()
+    const ask = await loadAsk()
     const reply = await ask(q, history)
     // small floor so instant local answers still read as "thought about it"
     const wait = Math.max(0, 500 + Math.min(q.length * 8, 400) - (performance.now() - started))
