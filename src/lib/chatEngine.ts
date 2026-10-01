@@ -383,8 +383,34 @@ async function remoteAnswer(history: WireMsg[]): Promise<string | null> {
   }
 }
 
+/* ---------- client-side abuse guards ----------
+   The chatbot is backed by a real LLM, so it must NOT become a free code/essay
+   generator or a way to exhaust the API quota. Two cheap guards here; the
+   serverless function adds per-IP rate limiting and a hard scope-locked prompt.
+   Every guard degrades gracefully to the free local knowledge engine. */
+let llmCallsThisSession = 0
+const LLM_SESSION_CAP = 25 // after this many LLM answers in a session, serve local only
+
+// code-generation / creative-writing / jailbreak trigger words
+const ABUSE_RE =
+  /\b(write|generate|create|produce|give me (the )?code|code for|program|script|function|console\.log|printf?|algorithm|leetcode|debug this|compile|sql query|regex for|translate|essay|poem|story|haiku|lyrics|cover letter|do my|solve|calculate|convert|refactor|unit tests?|hello world)\b|ignore (the |all |previous )?(instruction|rule|prompt)|system prompt|you are now|act as a|pretend (you|to be)|jailbreak/i
+
+/** true when a message is off-topic / code-gen / a jailbreak attempt — so we can
+ *  answer it locally and never spend an LLM token on it. A clear reference to
+ *  Prashant (or to the assistant itself) overrides a trigger word, keeping real
+ *  questions on the LLM. */
+function offTopicOrAbuse(q: string): boolean {
+  if (/\b(prashant|he|he'?s|his|him|dwerp|msbc|quarters|signet|ai-?diff|clovers|portfolio|resume|hire|experience|skill|owner|creator|you|your|yourself)\b/i.test(q)) return false
+  return ABUSE_RE.test(q)
+}
+
 export async function ask(query: string, history: WireMsg[]): Promise<BotReply> {
-  const remote = await remoteAnswer([...history, { role: 'user', content: query }])
-  if (remote) return { text: remote, chips: DEFAULT_CHIPS }
+  if (!offTopicOrAbuse(query) && llmCallsThisSession < LLM_SESSION_CAP) {
+    const remote = await remoteAnswer([...history, { role: 'user', content: query }])
+    if (remote) {
+      llmCallsThisSession++
+      return { text: remote, chips: DEFAULT_CHIPS }
+    }
+  }
   return localAnswer(query)
 }
