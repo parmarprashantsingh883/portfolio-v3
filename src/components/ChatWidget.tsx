@@ -255,7 +255,7 @@ export default function ChatWidget() {
               </svg>
             </button>
           </form>
-          <div className="chat-note">local knowledge engine · upgrades to a live LLM when deployed with an API key</div>
+          <div className="chat-note">Custom AI, built by Prashant · verify specifics with him directly</div>
         </div>
       )}
     </>
