@@ -20,6 +20,7 @@ export default function App() {
   useAnimations()
   return (
     <>
+      <a className="skip-link" href="#top">Skip to content</a>
       <Intro />
       <div className="dots" />
       <div className="orb a" />
