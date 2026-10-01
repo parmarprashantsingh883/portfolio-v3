@@ -68,22 +68,6 @@ const PROJECTS: Project[] = [
     tags: ['TypeScript', 'Node.js', 'AST', 'Vitest'],
     repo: 'https://github.com/prashnat-MSBC/ai-diff-check',
   },
-  {
-    num: '04',
-    sid: 'clovers',
-    accent: '#ff8a3d',
-    title: 'Clovers',
-    badge: { label: 'React · REST', kind: 'app' },
-    role: 'Grocery e-commerce storefront',
-    desc: 'A full grocery storefront built against a JSON REST API.',
-    points: [
-      <>Category filters, dynamic product pages, <b>cart &amp; wishlist</b> flows</>,
-      <><b>Search, reviews, coupons</b> &amp; order timeline — a full e-commerce tier</>,
-      <>Composed from <b>reusable, responsive components</b>, backed by <b>21 tests</b></>,
-    ],
-    tags: ['React', 'REST API', 'Responsive UI'],
-    repo: 'https://github.com/parmarprashantsingh883/clovers',
-  },
 ]
 
 export default function Work() {

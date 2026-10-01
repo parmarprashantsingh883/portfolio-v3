@@ -13,7 +13,7 @@ type Build = { name: string; when: string; note: string }
 const BUILDS: Build[] = [
   { name: 'Quarters', when: 'Jun 2026 · Live', note: 'Multi-tenant SaaS — built & deployed solo, in production.' },
   { name: 'ai-diff-check', when: 'Jul 2026 · npm', note: 'Open-source CLI, 3,000+ downloads — a “vibe check” for AI diffs.' },
-  { name: 'Signet & Clovers', when: '2026', note: 'More full-stack builds — from an e-commerce store to product tooling.' },
+  { name: 'Signet', when: '2026', note: 'Enterprise-style IT asset platform — design system, dashboard analytics, signed-PDF handovers.' },
 ]
 
 export default function About() {

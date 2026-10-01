@@ -36,7 +36,6 @@ export const SYNONYMS: Record<string, string> = {
   hostel: 'quarters', hostelhub: 'quarters', saas: 'quarters', pg: 'quarters',
   asset: 'signet', signet: 'signet',
   diff: 'adc', 'ai-diff-check': 'adc', aidiffcheck: 'adc', npm: 'adc', cli: 'adc', package: 'adc',
-  clover: 'clovers', ecommerce: 'clovers', grocery: 'clovers', store: 'clovers', shop: 'clovers',
   based: 'location', city: 'location', ahmedabad: 'location', relocate: 'location', relocation: 'location', remote: 'location',
   hire: 'availability', hiring: 'availability', available: 'availability', join: 'availability',
   opening: 'availability', opportunity: 'availability', freelance: 'availability', notice: 'availability', salary: 'availability',
@@ -88,7 +87,7 @@ export const KB: KBEntry[] = [
     keys: ['projects', 'shipped', 'showcase'],
     phrases: ['what has he built', 'side projects', 'other projects'],
     answer:
-      "First and foremost: **DWERP** — his **live production project** at MSBC Group. An enterprise multi-tenant ERP that real businesses run their operations on, built with React 19 + TypeScript strict. That's professional, in-production experience, not a portfolio piece.\nThen the solo builds:\n1. **Quarters** — multi-tenant hostel SaaS, **deployed & live** (React, Node/Express, MongoDB Atlas)\n2. **Signet** — enterprise-style IT asset platform with its own design system\n3. **ai-diff-check** — **npm-published** CLI that reviews AI-written code (**3,000+ downloads**)\n4. **Clovers** — grocery e-commerce storefront\nAsk about any of them!",
+      "First and foremost: **DWERP** — his **live production project** at MSBC Group. An enterprise multi-tenant ERP that real businesses run their operations on, built with React 19 + TypeScript strict. That's professional, in-production experience, not a portfolio piece.\nThen the solo builds:\n1. **Quarters** — multi-tenant hostel SaaS, **deployed & live** (React, Node/Express, MongoDB Atlas)\n2. **Signet** — enterprise-style IT asset platform with its own design system\n3. **ai-diff-check** — **npm-published** CLI that reviews AI-written code (**3,000+ downloads**)\nAsk about any of them!",
     chips: ['His live project DWERP', 'Tell me about Quarters', 'What is ai-diff-check?'],
   },
   {
@@ -111,13 +110,6 @@ export const KB: KBEntry[] = [
     answer:
       "**ai-diff-check** is Prashant's answer to shipping AI-generated code responsibly — a CLI that reviews AI-written diffs *before* they're committed.\n→ **Published on npm** (v2.2.0) — `npx ai-diff-check`, **3,000+ downloads**\n→ Deterministic **AST analysis** — no cloud, no LLM required\n→ Flags duplicated logic, dead exports, stubbed error handling and untested changes\n**Stack:** TypeScript · Node.js · Vitest.",
     chips: ['His AI workflow', 'Other projects', 'GitHub'],
-  },
-  {
-    id: 'clovers',
-    keys: ['clovers'],
-    answer:
-      '**Clovers** is a grocery e-commerce storefront built against a JSON REST API — category filters, dynamic product pages, and **cart & wishlist** flows, composed from reusable responsive components.\n**Stack:** React · REST API.',
-    chips: ['Tell me about Quarters', 'His tech stack'],
   },
   {
     id: 'contact',
@@ -199,7 +191,6 @@ export const BRIEFS: Record<string, string> = {
   quarters: '**Quarters** — multi-tenant hostel SaaS designed, built & deployed solo (React, Node/Express, MongoDB Atlas): tenant isolation, billing, PDF receipts',
   signet: '**Signet** — enterprise-style IT asset platform (React 18 + TS strict): dashboard analytics, handover wizard with signed PDF, RBAC-gated',
   adc: '**ai-diff-check** — npm-published CLI (`npx ai-diff-check`, 3,000+ downloads) that reviews AI-written diffs via deterministic AST analysis',
-  clovers: '**Clovers** — grocery e-commerce storefront (React + REST) with cart & wishlist flows',
 }
 
 /** verdict lines for project comparisons */
@@ -246,7 +237,7 @@ export const SKILL_LOOKUP: Record<string, string> = {
 }
 
 export const SKILL_FACTS: Record<string, SkillFact> = {
-  react: { known: true, text: 'React is his daily driver — **React 19 in production** on DWERP, React 18 on Signet, React on Quarters and Clovers.' },
+  react: { known: true, text: 'React is his daily driver — **React 19 in production** on DWERP, React 18 on Signet, React on Quarters.' },
   typescript: { known: true, text: '**TypeScript strict** is his default, not an add-on — DWERP and Signet are fully typed, with form types inferred from Zod schemas.' },
   javascript: { known: true, text: 'Solid ES6+ JavaScript — the base layer under all his React and Node work.' },
   tailwind: { known: true, text: 'Yes — **Tailwind CSS** on DWERP and Signet, plus hand-written CSS design systems (this site is one).' },

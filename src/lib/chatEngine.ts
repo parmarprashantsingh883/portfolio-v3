@@ -51,17 +51,24 @@ const isYesNoQ = (q: string) =>
   /^(does|do|did|is|has|have|had|can|could|would|will|was|are|any)\b/i.test(q.trim()) ||
   /\b(know|knows|use|uses|used|familiar|worked|work with|experience (with|in|of)|comfortable)\b/i.test(q)
 
-const PROJECT_IDS = new Set(['quarters', 'signet', 'adc', 'clovers', 'dwerp'])
+const PROJECT_IDS = new Set(['quarters', 'signet', 'adc', 'dwerp'])
 
 let lastEntry: KBEntry | null = null
 
 /* ---------- small talk ---------- */
 
+/** actual time-of-day greeting — runs in the browser, so it reflects the
+ *  visitor's local time (a "good morning" typed at night still gets "Good evening!"). */
+const timeGreeting = (): string => {
+  const h = new Date().getHours()
+  return h < 12 ? 'Good morning!' : h < 17 ? 'Good afternoon!' : 'Good evening!'
+}
+
 const SMALLTALK: Array<[RegExp, () => BotReply]> = [
   [
     /^(hi+|hy+|hey+|heya?|hii*|hello+|helo+|yo|hola|namaste|sup|wassup|good (morning|afternoon|evening))\b/i,
     () => ({
-      text: 'Hey! 👋 Great to have you here. Ask me anything about Prashant — his work, projects, or how to reach him.',
+      text: `${timeGreeting()} 👋 Great to have you here — ask me anything about Prashant: his work, projects, or how to reach him.`,
       chips: DEFAULT_CHIPS,
     }),
   ],
@@ -400,11 +407,16 @@ const ABUSE_RE =
  *  Prashant (or to the assistant itself) overrides a trigger word, keeping real
  *  questions on the LLM. */
 function offTopicOrAbuse(q: string): boolean {
-  if (/\b(prashant|he|he'?s|his|him|dwerp|msbc|quarters|signet|ai-?diff|clovers|portfolio|resume|hire|experience|skill|owner|creator|you|your|yourself)\b/i.test(q)) return false
+  if (/\b(prashant|he|he'?s|his|him|dwerp|msbc|quarters|signet|ai-?diff|portfolio|resume|hire|experience|skill|owner|creator|you|your|yourself)\b/i.test(q)) return false
   return ABUSE_RE.test(q)
 }
 
+/** a message that is ONLY a greeting/thanks/bye → handled locally: free, instant,
+ *  and time-aware (so "good morning" typed at night still replies "Good evening!"). */
+const SMALLTALK_ONLY = /^\s*(hi+|hy+|hey+|heya?|hii*|hello+|helo+|yo+|hola|namaste|sup|wassup|good (morning|afternoon|evening)|thanks?|thank you|thx|ty|cheers|bye+|goodbye|see (you|ya)|cya|later)[\s!.,]*$/i
+
 export async function ask(query: string, history: WireMsg[]): Promise<BotReply> {
+  if (SMALLTALK_ONLY.test(query)) return localAnswer(query)
   if (!offTopicOrAbuse(query) && llmCallsThisSession < LLM_SESSION_CAP) {
     const remote = await remoteAnswer([...history, { role: 'user', content: query }])
     if (remote) {

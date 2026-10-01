@@ -71,24 +71,6 @@ export const STUDIES: Record<string, Study> = {
       { label: 'GitHub repo ↗', href: 'https://github.com/prashant1234568/ai-diff-check' },
     ],
   },
-  clovers: {
-    title: 'Clovers — case study',
-    accent: '#ff8a3d',
-    status: 'React · REST',
-    problem:
-      'A grocery storefront built to master real e-commerce flows end to end — not a todo app: catalogue, search, cart, checkout-adjacent flows and the state management they actually require.',
-    decisions: [
-      { q: 'How to keep 10+ screens consistent?', a: 'Composed from reusable, responsive components — one card, one list, one form pattern reused everywhere.' },
-      { q: 'How to keep it honest?', a: 'A 21-test suite over the flows — features count when they\'re verified.' },
-    ],
-    arch: ['React SPA', 'JSON REST API'],
-    outcomes: [
-      'Full e-commerce tier: search, reviews, wishlist, coupons, order timeline',
-      'Cart & address flows with reusable component architecture',
-      '21 passing tests',
-    ],
-    links: [{ label: 'GitHub repo ↗', href: 'https://github.com/parmarprashantsingh883/clovers' }],
-  },
 }
 
 export default function CaseStudy({ id, onClose }: { id: string | null; onClose: () => void }) {
