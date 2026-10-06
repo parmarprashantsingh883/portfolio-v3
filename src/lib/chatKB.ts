@@ -116,7 +116,7 @@ export const KB: KBEntry[] = [
     keys: ['contact', 'whatsapp', 'number', 'mobile', 'telephone'],
     phrases: ['get in touch', 'talk to him'],
     answer:
-      '📧 **Email:** [parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)\n📱 **Phone:** [+91-9574028096](tel:+919574028096)\n💼 **LinkedIn:** [linkedin.com/in/prashant-parmar](https://linkedin.com/in/prashant-parmar)\n🐙 **GitHub:** [github.com/parmarprashantsingh883](https://github.com/parmarprashantsingh883)\n📄 **Resume:** [download the PDF](' + RESUME_URL + ')\nHe responds fast — reach out!',
+      '📧 **Email:** [parmarprashantsingh883@gmail.com](mailto:parmarprashantsingh883@gmail.com)\n📱 **Phone:** [+91-9574028096](tel:+919574028096)\n💬 **WhatsApp:** [chat on WhatsApp](https://wa.me/919574028096)\n💼 **LinkedIn:** [linkedin.com/in/prashant-parmar](https://linkedin.com/in/prashant-parmar)\n🐙 **GitHub:** [github.com/parmarprashantsingh883](https://github.com/parmarprashantsingh883)\n📄 **Resume:** [download the PDF](' + RESUME_URL + ')\nHe responds fast — reach out!',
     chips: ['Is he available for hire?', 'Download resume'],
   },
   {
